@@ -96,9 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <i data-lucide="eye"></i>
             <span>Revisar</span>
           </a>
-          <button class="btn-icon-only">
-            <i data-lucide="more-vertical"></i>
-          </button>
         </td>
       `;
 

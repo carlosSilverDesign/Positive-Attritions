@@ -351,10 +351,12 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 6px;
   transition: background-color 0.2s ease;
+  min-width: 96px;
 }
 
 .btn-table-action:hover {
@@ -367,16 +369,7 @@ body {
 }
 
 .btn-icon-only {
-  background: none;
-  border: none;
-  color: #64748B;
-  padding: 8px;
-  border-radius: 6px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.2s ease;
+  display: none;
 }
 
 .btn-icon-only:hover {

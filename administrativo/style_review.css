@@ -292,6 +292,11 @@ body {
 .visual-course-credits {
   font-weight: 500;
   color: #64748B;
+  white-space: nowrap;
+  display: inline-block;
+  min-width: 72px;
+  text-align: right;
+  flex-shrink: 0;
 }
 
 .arrow-icon-side {

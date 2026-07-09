@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializar los iconos de Lucide
   lucide.createIcons();
 
   // Detectar recarga dinámica con F5 usando performance APIs para reiniciar el mockup

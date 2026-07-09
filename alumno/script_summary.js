@@ -26,7 +26,6 @@ const PREDEFINED_EQUIVALENCIES = [
 let equivalencies = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Inicializar Lucide
   lucide.createIcons();
 
   const saved = localStorage.getItem("positive_attritions_draft");
