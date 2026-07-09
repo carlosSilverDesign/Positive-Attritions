@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solicitud de Adecuación Curricular</title>
-  <!-- Google Fonts -->
+  <!-- Fuentes de Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <!-- Lucide Icons CDN -->
+  <!-- CDN de iconos de Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Stylesheet -->
+  <!-- Hoja de estilos -->
   <link rel="stylesheet" href="style_apply.css">
 </head>
 <body>
   <div class="app-layout">
-    <!-- Header -->
+    <!-- Encabezado -->
     <header class="header">
       <div class="header-left">
         <a href="index.html" class="btn-back">
@@ -34,7 +34,7 @@
       </div>
     </header>
 
-    <!-- Credits Banner -->
+    <!-- Banner de créditos -->
     <div class="credits-banner">
       <div class="credits-container">
         <div class="credits-label">
@@ -55,9 +55,9 @@
       </div>
     </div>
 
-    <!-- Main Workspace -->
+    <!-- Área de trabajo principal -->
     <main class="workspace">
-      <!-- Comparative Column Left -->
+      <!-- Columna comparativa izquierda -->
       <section class="plan-column">
         <div class="column-header">
           <div>
@@ -67,7 +67,7 @@
           <span class="badge-count" id="count-old">7 Cursos</span>
         </div>
         <div class="course-list" id="old-courses-container">
-          <!-- Filled by Javascript -->
+          <!-- Rellenado por JavaScript -->
         </div>
         
         <div class="orphaned-section" id="orphaned-section" style="display: none;">
@@ -76,13 +76,13 @@
             <h4>Cursos sin convalidación</h4>
           </div>
           <div class="orphaned-list" id="orphaned-list-container">
-            <!-- Filled by Javascript -->
+            <!-- Rellenado por JavaScript -->
           </div>
           <p class="orphaned-notice">Estos cursos se registrarán como "Créditos Electivos" o "Históricos".</p>
         </div>
       </section>
 
-      <!-- Center Action Button (Desktop Only) -->
+      <!-- Botón de acción central (solo escritorio) -->
       <div class="center-action-area">
         <button class="btn-link-action disabled" id="btn-link-courses" disabled>
           <div class="btn-link-icon-circle">
@@ -93,7 +93,7 @@
         </button>
       </div>
 
-      <!-- Comparative Column Right -->
+      <!-- Columna comparativa derecha -->
       <section class="plan-column">
         <div class="column-header">
           <div>
@@ -103,12 +103,12 @@
           <span class="badge-count" id="count-new">6 Cursos</span>
         </div>
         <div class="course-list" id="new-courses-container">
-          <!-- Filled by Javascript -->
+          <!-- Rellenado por JavaScript -->
         </div>
       </section>
     </main>
 
-    <!-- Mobile Floating Action Bar -->
+    <!-- Barra flotante de acción para móviles -->
     <div class="mobile-action-bar">
       <div class="mobile-desc">
         <p class="mobile-status-title" id="mobile-ratio-title">Selecciona cursos para vincular</p>
@@ -121,7 +121,7 @@
     </div>
   </div>
 
-  <!-- Dialog Modal for Justification -->
+  <!-- Diálogo modal para la justificación -->
   <dialog class="modal-dialog" id="justification-modal">
     <div class="modal-content">
       <div class="modal-header">

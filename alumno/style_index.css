@@ -17,7 +17,7 @@ body {
   margin: 0 auto;
 }
 
-/* Welcome Card */
+/* Tarjeta de bienvenida */
 .welcome-card {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
@@ -103,7 +103,7 @@ body {
   transform: scale(0.98);
 }
 
-/* Stats Grid */
+/* Cuadrícula de estadísticas */
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -188,7 +188,7 @@ body {
   color: #1D4ED8;
 }
 
-/* History Card */
+/* Tarjeta de historial */
 .history-card {
   background-color: #FFFFFF;
   border-radius: 12px;
@@ -199,7 +199,7 @@ body {
 
 .history-header {
   padding: 16px 24px;
-  border-b: 1px solid #E2E8F0;
+  border: 1px solid #E2E8F0;
   background-color: #F8FAFC;
   display: flex;
   justify-content: space-between;
@@ -221,7 +221,7 @@ body {
   padding: 24px;
 }
 
-/* Empty State */
+/* Estado vacío */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -272,7 +272,7 @@ body {
   text-decoration: underline;
 }
 
-/* Pending Application Layout */
+/* Diseño de solicitud pendiente */
 .pending-card {
   border: 1px solid #E2E8F0;
   border-radius: 12px;

@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize Lucide Icons
+  // Inicializar los iconos de Lucide
   lucide.createIcons();
 
-  // Detect dynamic F5 / Reload using performance APIs to reset mockup
+  // Detectar recarga dinámica con F5 usando performance APIs para reiniciar el mockup
   const isReload = performance.getEntriesByType("navigation")[0]?.type === "reload";
   if (isReload) {
     localStorage.removeItem("positive_attritions_pending");
@@ -13,17 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const historyContentArea = document.getElementById("history-content-area");
   const actionContainer = document.getElementById("action-container");
 
-  // Read application status from localStorage
+  // Leer el estado de la solicitud desde localStorage
   const isPending = localStorage.getItem("positive_attritions_pending") === "true";
   const adminStatus = localStorage.getItem("admin_status_app-1");
 
   if (isPending || adminStatus) {
-    // Hide the 'Start Application' button from the welcome section if it's pending or resolved
+    // Ocultar el botón de "Iniciar solicitud" de la sección de bienvenida si está pendiente o resuelta
     if (adminStatus !== "approved" && adminStatus !== "rejected") {
       actionContainer.innerHTML = "";
     }
 
-    // Build the status and class based on variables
+    // Construir el estado y la clase según las variables
     let badgeClass = "badge-pending";
     let statusLabel = "Pendiente de Revisión";
     let adminText = "Coordinador: Lic. Ricardo Montes";
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       adminText = "Rechazado por: Lic. Ricardo Montes";
     }
 
-    // Render the active application
+    // Renderizar la solicitud activa
     historyContentArea.innerHTML = `
       <div class="pending-card">
         <div class="pending-left">
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
     
-    // Re-trigger icon rendering for the dynamic elements
+    // Volver a renderizar los iconos de los elementos dinámicos
     lucide.createIcons();
   }
 });

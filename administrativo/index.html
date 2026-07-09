@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestión de Reincorporaciones - Administrativo</title>
-  <!-- Google Fonts -->
+  <!-- Fuentes de Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <!-- Lucide Icons CDN -->
+  <!-- CDN de iconos de Lucide -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Stylesheet -->
+  <!-- Hoja de estilos -->
   <link rel="stylesheet" href="style_index.css">
 </head>
 <body>
   <div class="container">
-    <!-- Header Area -->
+    <!-- Área del encabezado -->
     <div class="dashboard-header">
       <div>
         <h1>Gestión de Reincorporaciones</h1>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <!-- Filters & Search bar (Omit global search per requirements, this is a filter within the table) -->
+    <!-- Barra de filtros y búsqueda (se omite la búsqueda global por requisitos; esta es un filtro dentro de la tabla) -->
     <div class="filters-card">
       <div class="search-input-wrapper">
         <i data-lucide="search" class="search-icon"></i>
@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <!-- DataGrid Table Card -->
+    <!-- Tarjeta de tabla de datos -->
     <div class="table-card">
       <div class="table-responsive">
         <table class="data-table">
@@ -57,11 +57,11 @@
             </tr>
           </thead>
           <tbody id="queue-table-body">
-            <!-- Rendered dynamically by JavaScript -->
+            <!-- Renderizado dinámicamente por JavaScript -->
           </tbody>
         </table>
       </div>
-      <!-- Pagination Footer -->
+      <!-- Pie de paginación -->
       <div class="table-footer">
         <p id="table-showing-text">Mostrando 5 de 5 solicitudes</p>
         <div class="pagination-buttons">

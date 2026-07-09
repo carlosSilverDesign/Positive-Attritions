@@ -20,7 +20,7 @@ body {
   gap: 32px;
 }
 
-/* Dashboard Header */
+/* Encabezado del panel */
 .dashboard-header {
   display: flex;
   flex-direction: column;
@@ -65,7 +65,7 @@ body {
   height: 18px;
 }
 
-/* Filters Card */
+/* Tarjeta de filtros */
 .filters-card {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
@@ -192,7 +192,7 @@ body {
   background-color: #0c6a73;
 }
 
-/* Table Card */
+/* Tarjeta de tabla */
 .table-card {
   background-color: #FFFFFF;
   border: 1px solid #E2E8F0;
@@ -232,7 +232,7 @@ body {
   background-color: rgba(241, 245, 249, 0.2);
 }
 
-/* Student cell wrapper */
+/* Contenedor de la celda del estudiante */
 .student-cell {
   display: flex;
   align-items: center;
@@ -285,7 +285,7 @@ body {
   text-align: right;
 }
 
-/* Obs. manuals badge */
+/* Badge de observaciones manuales */
 .badge-orange-alert {
   background-color: #FFF7ED;
   color: #C2410C;
@@ -305,7 +305,7 @@ body {
   color: #EA580C;
 }
 
-/* Status Badges */
+/* Badges de estado */
 .status-badge {
   display: inline-flex;
   align-items: center;
@@ -343,7 +343,7 @@ body {
   color: #B91C1C;
 }
 
-/* Action Links */
+/* Enlaces de acción */
 .btn-table-action {
   color: #0f848f;
   font-weight: 700;
@@ -383,7 +383,7 @@ body {
   background-color: #F1F5F9;
 }
 
-/* Table Footer Pagination */
+/* Pie de paginación de la tabla */
 .table-footer {
   padding: 16px 24px;
   background-color: rgba(241, 245, 249, 0.3);

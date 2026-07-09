@@ -1,4 +1,4 @@
-// Mock data mirroring the original React project
+// Datos simulados que imitan el proyecto original en React
 const MOCK_COURSES_OLD = [
   { id: 'o1', code: 'MAT1', name: 'Matemática 1', credits: 3, grade: 16, status: 'approved', plan: 'old' },
   { id: 'o2', code: 'MAT2', name: 'Matemática 2', credits: 3, grade: 14, status: 'approved', plan: 'old' },
@@ -24,21 +24,21 @@ const PREDEFINED_EQUIVALENCIES = [
   { id: 'e3', sourceIds: ['o4'], targetId: 'n3', type: 'direct', automatic: true },
 ];
 
-// State variables
+// Variables de estado
 let equivalencies = [];
 let selectedSourceIds = [];
 let selectedTargetId = null;
 let hoveredEquivalencyId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Lucide
+  // Inicializar Lucide
   lucide.createIcons();
 
-  // Load from local storage or set defaults
+  // Cargar desde localStorage o usar valores predeterminados
   const saved = localStorage.getItem("positive_attritions_draft");
   if (saved) {
     equivalencies = JSON.parse(saved);
-    // Ensure automatic equivalencies are always present in the draft
+    // Asegurar que las equivalencias automáticas siempre estén presentes en el borrador
     PREDEFINED_EQUIVALENCIES.forEach(autoEq => {
       if (!equivalencies.some(e => e.id === autoEq.id)) {
         equivalencies.push(autoEq);
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("positive_attritions_draft", JSON.stringify(equivalencies));
   }
 
-  // DOM elements
+  // Elementos del DOM
   const oldContainer = document.getElementById("old-courses-container");
   const newContainer = document.getElementById("new-courses-container");
   const orphanedContainer = document.getElementById("orphaned-list-container");
@@ -67,13 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnCancelModal = document.getElementById("btn-cancel-modal");
   const btnCloseModal = document.getElementById("btn-close-modal");
 
-  // Save changes helper
+  // Helper para guardar cambios
   function saveDraft() {
     localStorage.setItem("positive_attritions_draft", JSON.stringify(equivalencies));
     updateCreditsBanner();
   }
 
-  // Update credits banner
+  // Actualizar el banner de créditos
   function updateCreditsBanner() {
     let automaticCredits = 0;
     let manualCredits = 0;
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("total-credits-val").textContent = `${automaticCredits + manualCredits} Cr.`;
   }
 
-  // Check if a course is mapped
+  // Verificar si un curso ya está mapeado
   function isCourseMapped(id, side) {
     if (side === 'old') {
       return equivalencies.some(e => e.sourceIds.includes(id));
@@ -111,15 +111,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Render course list
+  // Renderizar la lista de cursos
   function renderCourses() {
-    // 1. Old courses (Plan 2018)
+    // 1. Cursos antiguos (Plan 2018)
     oldContainer.innerHTML = "";
     MOCK_COURSES_OLD.forEach(course => {
       const isSelected = selectedSourceIds.includes(course.id);
       const isMapped = isCourseMapped(course.id, 'old');
       
-      // Determine highlight
+      // Determinar el resaltado
       let isHighlighted = false;
       if (hoveredEquivalencyId) {
         const eq = equivalencies.find(e => e.id === hoveredEquivalencyId);
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // Event listeners
+      // Escuchas de eventos
       card.addEventListener("click", () => handleOldSelect(course.id));
       card.addEventListener("mouseenter", () => handleHoverEquivalency(course.id, 'old'));
       card.addEventListener("mouseleave", () => handleLeaveEquivalency());
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
       oldContainer.appendChild(card);
     });
 
-    // 2. New courses (Plan 2024)
+    // 2. Cursos nuevos (Plan 2024)
     newContainer.innerHTML = "";
     MOCK_COURSES_NEW.forEach(course => {
       const isSelected = selectedTargetId === course.id;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Find mapped source courses for this target
+      // Buscar cursos de origen vinculados a este destino
       const eq = equivalencies.find(e => e.targetId === course.id);
       let mappingsHtml = "";
       if (isMapped && eq) {
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
 
       card.addEventListener("click", (e) => {
-        // Prevent trigger if they click "Remover vínculo"
+        // Evitar que se dispare si hacen clic en "Remover vínculo"
         if (e.target.classList.contains("btn-remove-mapping")) {
           const eqId = e.target.dataset.eqId;
           removeEquivalency(eqId);
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newContainer.appendChild(card);
     });
 
-    // 3. Orphaned courses
+    // 3. Cursos huérfanos
     const orphaned = MOCK_COURSES_OLD.filter(c => !isCourseMapped(c.id, 'old'));
     if (orphaned.length > 0) {
       orphanedSection.style.display = "block";
@@ -238,12 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
       orphanedSection.style.display = "none";
     }
 
-    // Refresh icons
+    // Actualizar iconos
     lucide.createIcons();
     updateActionButtons();
   }
 
-  // Hover animations/indicator linkage
+  // Vinculación de hover y estados visuales
   function handleHoverEquivalency(id, side) {
     let eq;
     if (side === 'old') {
@@ -253,8 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (eq) {
       hoveredEquivalencyId = eq.id;
-      // Re-render to show hover states
-      // We manually add classes instead of full re-render for performance
+      // Volver a renderizar para mostrar los estados de hover
+      // Se agregan clases manualmente en lugar de re-renderizar todo por rendimiento
       document.querySelectorAll(".course-card").forEach(card => {
         const cardId = card.dataset.id;
         if (card.classList.contains("old-mapped")) {
@@ -273,9 +273,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Selection handlers
+  // Manejadores de selección
   function handleOldSelect(id) {
-    if (isCourseMapped(id, 'old')) return; // Already linked
+    if (isCourseMapped(id, 'old')) return; // Ya está vinculado
 
     if (selectedSourceIds.includes(id)) {
       selectedSourceIds = selectedSourceIds.filter(i => i !== id);
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleNewSelect(id) {
-    if (isCourseMapped(id, 'new')) return; // Already linked
+    if (isCourseMapped(id, 'new')) return; // Ya está vinculado
 
     if (selectedTargetId === id) {
       selectedTargetId = null;
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCourses();
   }
 
-  // Action state management
+  // Gestión del estado de los botones de acción
   function updateActionButtons() {
     const active = selectedSourceIds.length > 0 && selectedTargetId !== null;
 
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Create manual equivalency
+  // Crear una equivalencia manual
   function removeEquivalency(id) {
     const eq = equivalencies.find(e => e.id === id);
     if (eq && eq.automatic) {
@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleOpenLinkModal() {
     if (selectedSourceIds.length === 0 || !selectedTargetId) return;
 
-    // Check if already mapped (extra validation)
+    // Verificar si ya está mapeado (validación adicional)
     if (equivalencies.some(e => e.targetId === selectedTargetId)) {
       alert("Este curso ya tiene una convalidación asignada");
       return;
@@ -372,16 +372,16 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCourses();
   }
 
-  // Link button actions
+  // Acciones de los botones de enlace
   btnLink.addEventListener("click", handleOpenLinkModal);
   btnLinkMobile.addEventListener("click", handleOpenLinkModal);
 
-  // Modal actions
+  // Acciones del modal
   btnConfirmModal.addEventListener("click", handleConfirmLink);
   btnCancelModal.addEventListener("click", () => justificationModal.close());
   btnCloseModal.addEventListener("click", () => justificationModal.close());
 
-  // Init view
+  // Inicializar la vista
   renderCourses();
   updateCreditsBanner();
 });

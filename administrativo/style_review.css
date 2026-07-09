@@ -19,7 +19,7 @@ body {
   height: 100vh;
 }
 
-/* Header */
+/* Encabezado */
 .header {
   background-color: #FFFFFF;
   border-bottom: 1px solid #E2E8F0;
@@ -133,7 +133,7 @@ body {
   background-color: #0c6a73;
 }
 
-/* Review Workspace Layout */
+/* Diseño del espacio de revisión */
 .review-workspace {
   flex: 1;
   overflow-y: auto;
@@ -190,7 +190,7 @@ body {
   color: #64748B;
 }
 
-/* Equivalencies Container */
+/* Contenedor de equivalencias */
 .equivalencies-container {
   display: flex;
   flex-direction: column;
@@ -266,7 +266,7 @@ body {
   height: 12px;
 }
 
-/* Row card contents mapping */
+/* Contenido del mapa de tarjetas */
 .mapping-visual-card {
   background-color: rgba(241, 245, 249, 0.3);
   border: 1px solid rgba(226, 232, 240, 0.8);
@@ -320,7 +320,7 @@ body {
   color: #64748B;
 }
 
-/* User justification message block */
+/* Bloque de mensaje de justificación del usuario */
 .student-message-box {
   background-color: #FFF7ED;
   border: 1px solid #FFEDD5;
@@ -354,7 +354,7 @@ body {
   font-style: italic;
 }
 
-/* Action button area for manual resolving */
+/* Área de botones de acción para resolución manual */
 .resolving-actions-column {
   flex-shrink: 0;
   display: flex;
@@ -534,7 +534,7 @@ body {
   border-radius: 4px;
 }
 
-/* Sidebar Columns styling */
+/* Estilo de las columnas de la barra lateral */
 .review-sidebar {
   display: flex;
   flex-direction: column;
@@ -676,7 +676,7 @@ body {
   transform: scale(0.98);
 }
 
-/* History Log timeline */
+/* Línea de tiempo del historial */
 .history-log {
   display: flex;
   flex-direction: column;

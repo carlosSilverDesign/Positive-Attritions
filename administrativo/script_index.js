@@ -7,20 +7,20 @@ const INITIAL_APPLICATIONS = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Lucide
+  // Inicializar Lucide
   lucide.createIcons();
 
   const tableBody = document.getElementById("queue-table-body");
   const searchInput = document.getElementById("table-search");
 
-  // Read current student states from localStorage
+  // Leer los estados actuales del estudiante desde localStorage
   const isPending = localStorage.getItem("positive_attritions_pending") === "true";
   const savedStatus = localStorage.getItem("admin_status_app-1");
 
-  // Build the live applications array
+  // Construir la lista actualizada de solicitudes
   let applications = [...INITIAL_APPLICATIONS];
   
-  // Update Juan Pérez application status based on localStorage
+  // Actualizar el estado de la solicitud de Juan Pérez según localStorage
   applications = applications.map(app => {
     if (app.id === 'app-1') {
       if (savedStatus) {
@@ -28,14 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (isPending) {
         return { ...app, status: 'pending' };
       } else {
-        // Not submitted yet by student in index dashboard
-        return { ...app, status: 'review' }; // Simulates draft/under review state
+        // Aún no ha sido enviada por el estudiante desde el dashboard principal
+        return { ...app, status: 'review' }; // Simula un borrador o estado en revisión
       }
     }
     return app;
   });
 
-  // Render Table
+  // Renderizar la tabla
   function renderTable(filterText = "") {
     tableBody.innerHTML = "";
     
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filtered.forEach(app => {
       const tr = document.createElement("tr");
 
-      // Badge generation
+      // Generación de badges
       let badgeHtml = "";
       switch (app.status) {
         case 'pending':
@@ -105,11 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
       tableBody.appendChild(tr);
     });
 
-    // Re-render icons
+    // Vuelve a renderizar los iconos
     lucide.createIcons();
   }
 
-  // Bind search event
+  // Vincular el evento de búsqueda
   searchInput.addEventListener("input", (e) => {
     renderTable(e.target.value);
   });

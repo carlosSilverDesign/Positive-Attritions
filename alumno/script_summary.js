@@ -26,13 +26,13 @@ const PREDEFINED_EQUIVALENCIES = [
 let equivalencies = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Lucide
+  // Inicializar Lucide
   lucide.createIcons();
 
   const saved = localStorage.getItem("positive_attritions_draft");
   if (saved) {
     equivalencies = JSON.parse(saved);
-    // Ensure automatic equivalencies are always present
+    // Asegurar que las equivalencias automáticas siempre estén presentes
     PREDEFINED_EQUIVALENCIES.forEach(autoEq => {
       if (!equivalencies.some(e => e.id === autoEq.id)) {
         equivalencies.push(autoEq);
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Generate HTML card
+      // Generar la tarjeta HTML
       const card = document.createElement("div");
       card.className = "equiv-item-card";
       
@@ -78,10 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const arrowBgClass = eq.automatic ? "auto-bg" : "manual-bg";
 
       card.innerHTML = `
-        <!-- Floating tag -->
+        <!-- Etiqueta flotante -->
         <span class="card-tag ${tagClass}">${tagLabel}</span>
 
-        <!-- Source Section -->
+        <!-- Sección de origen -->
         <div class="equiv-plan-side">
           <p class="side-title">Plan Viejo</p>
           <div class="side-courses-list">
@@ -94,14 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
 
-        <!-- Arrow Divider -->
+        <!-- Separador de flecha -->
         <div class="arrow-divider">
           <div class="arrow-circle ${arrowBgClass}">
             <i data-lucide="arrow-right"></i>
           </div>
         </div>
 
-        <!-- Target Section -->
+        <!-- Sección de destino -->
         <div class="equiv-plan-side">
           <p class="side-title">Plan Nuevo</p>
           <div class="side-courses-list">
@@ -112,20 +112,20 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
 
-        <!-- Justification box for manual equivalents -->
+        <!-- Caja de justificación para equivalencias manuales -->
         ${!eq.automatic ? `
           <div class="justification-display-box">
             <i data-lucide="message-square"></i>
             <p>Justificación: ${eq.justification}</p>
           </div>
-          <!-- Delete button -->
+          <!-- Botón de eliminación -->
           <button class="btn-delete-summary" data-eq-id="${eq.id}">
             <i data-lucide="x"></i>
           </button>
         ` : ''}
       `;
 
-      // Event listener for delete button inside card
+      // Escuchador de eventos para el botón de eliminación dentro de la tarjeta
       if (!eq.automatic) {
         card.querySelector(".btn-delete-summary").addEventListener("click", () => {
           removeEquivalency(eq.id);
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       listContainer.appendChild(card);
     });
 
-    // Update numbers
+    // Actualizar los números
     document.getElementById("auto-credits-num").textContent = automaticCredits;
     document.getElementById("manual-credits-num").textContent = manualCredits;
     document.getElementById("total-credits-num").textContent = automaticCredits + manualCredits;
@@ -143,17 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
     lucide.createIcons();
   }
 
-  // Submit flow
+  // Flujo de envío
   btnSubmit.addEventListener("click", () => {
     btnSubmit.disabled = true;
     btnSubmit.querySelector("span").textContent = "Enviando...";
 
     setTimeout(() => {
-      // Clean draft, set global pending state
+      // Limpiar el borrador y establecer el estado global de pendiente
       localStorage.removeItem("positive_attritions_draft");
       localStorage.setItem("positive_attritions_pending", "true");
       
-      // Clean any admin simulation override to trigger pending state in admin view
+      // Limpiar cualquier override de simulación administrativa para activar el estado pendiente en la vista de administración
       localStorage.removeItem("admin_status_app-1");
 
       alert("Solicitud enviada con éxito");

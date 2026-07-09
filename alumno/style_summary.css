@@ -17,7 +17,7 @@ body {
   min-height: 100vh;
 }
 
-/* Header */
+/* Encabezado */
 .header {
   background-color: #FFFFFF;
   border-bottom: 1px solid #E2E8F0;
@@ -106,7 +106,7 @@ body {
   background-color: #0c6a73;
 }
 
-/* Main summary content */
+/* Contenido principal del resumen */
 .summary-container {
   flex: 1;
   padding: 32px 16px;
@@ -136,7 +136,7 @@ body {
   margin-top: 4px;
 }
 
-/* Stats dashboard */
+/* Panel de estadísticas */
 .stats-dashboard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -218,7 +218,7 @@ body {
   color: rgba(255, 255, 255, 0.6);
 }
 
-/* Equivalencies List */
+/* Lista de equivalencias */
 .equivalencies-list {
   display: flex;
   flex-direction: column;
@@ -327,7 +327,7 @@ body {
   font-weight: 700;
 }
 
-/* Floating top tag */
+/* Etiqueta flotante superior */
 .card-tag {
   position: absolute;
   top: -10px;
@@ -351,7 +351,7 @@ body {
   color: #FFFFFF;
 }
 
-/* Justification box */
+/* Caja de justificación */
 .justification-display-box {
   width: 100%;
   margin-top: 8px;
@@ -373,7 +373,7 @@ body {
   margin-top: 2px;
 }
 
-/* Delete cross button */
+/* Botón de eliminación */
 .btn-delete-summary {
   position: absolute;
   top: 8px;
@@ -396,7 +396,7 @@ body {
   opacity: 1;
 }
 
-/* Info Disclaimer */
+/* Aviso informativo */
 .info-disclaimer {
   background-color: rgba(15, 132, 143, 0.04);
   border: 1px solid rgba(15, 132, 143, 0.15);

@@ -23,35 +23,35 @@ const PREDEFINED_EQUIVALENCIES = [
   { id: 'e3', sourceIds: ['o4'], targetId: 'n3', type: 'direct', automatic: true },
 ];
 
-// In a real scenario, this screen would parse location.search to find ?id=app-1
+// En un escenario real, esta pantalla leería location.search para encontrar ?id=app-1
 const urlParams = new URLSearchParams(window.location.search);
 const appId = urlParams.get('id') || 'app-1';
 
-// Initial state of equivalencies to show
+// Estado inicial de las equivalencias a mostrar
 let reviewEquivalencies = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Init Lucide
+  // Inicializar Lucide
   lucide.createIcons();
 
-  // Populate data
+  // Poblar los datos
   document.getElementById("header-app-id").textContent = appId;
   
-  // Set up resolving list. If there is a manual application draft from student in localStorage, load it.
+  // Preparar la lista de resolución. Si existe un borrador manual del estudiante en localStorage, cargarlo.
   const savedStudentDraft = localStorage.getItem("positive_attritions_draft");
   const isStudentPending = localStorage.getItem("positive_attritions_pending") === "true";
 
   if (appId === 'app-1' && isStudentPending && savedStudentDraft) {
-    // If student sent custom manual equivalencies, show them
+    // Si el estudiante envió equivalencias manuales personalizadas, mostrarlas
     reviewEquivalencies = JSON.parse(savedStudentDraft);
   } else {
-    // Fallback default setup mimicking React app's default manual review setup
+    // Configuración por defecto de respaldo que imita la propuesta inicial del flujo
     reviewEquivalencies = [
       ...PREDEFINED_EQUIVALENCIES,
       {
         id: 'manual-1',
         sourceIds: ['o1', 'o7'],
-        targetId: 'n4', // maps to Contabilidad de Gestión or similar
+        targetId: 'n4', // corresponde a Contabilidad de Gestión o algo similar
         type: 'and',
         automatic: false,
         justification: "El alumno aprobó Contabilidad Básica y Mate 1, lo que fundamenta el razonamiento financiero necesario para Contabilidad de Gestión.",
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const listContainer = document.getElementById("equivalencies-list");
   const commentsTextarea = document.getElementById("global-comments");
 
-  // Aproved/Reject event listeners for manual ones
+  // Escuchas de eventos para aprobar o rechazar equivalencias manuales
   function handleResolve(equivId, status) {
     reviewEquivalencies = reviewEquivalencies.map(e => {
       if (e.id === equivId) {
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
       `;
 
-      // Bind resolve action click events
+      // Vincular eventos de clic para resolver
       if (!eq.automatic) {
         box.querySelector(".btn-action-resolve.reject").addEventListener("click", () => {
           handleResolve(eq.id, 'rejected');
@@ -181,11 +181,11 @@ document.addEventListener("DOMContentLoaded", () => {
       listContainer.appendChild(box);
     });
 
-    // Re-render Lucide icons
+    // Volver a renderizar los iconos de Lucide
     lucide.createIcons();
   }
 
-  // Submit resolution handler
+  // Manejador de envío de resolución
   function submitResolution(status) {
     if (status === 'rejected' && !commentsTextarea.value.trim()) {
       alert("Debes incluir un comentario global para el rechazo");
@@ -194,17 +194,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const buttonName = status === 'approved' ? 'Aprobando...' : 'Rechazando...';
     
-    // Save status
+    // Guardar el estado
     localStorage.setItem(`admin_status_${appId}`, status);
     
-    // If it's resolved, remove the global pending flag from student view
+    // Si ya se resolvió, eliminar la bandera global de pendiente para la vista del estudiante
     localStorage.removeItem("positive_attritions_pending");
 
     alert(`Solicitud ${status === 'approved' ? 'Aprobada' : 'Rechazada'} con éxito`);
     window.location.href = "index.html";
   }
 
-  // Header and Sidebar Action Button bindings
+  // Vincular botones de acción del encabezado y la barra lateral
   document.getElementById("btn-reject-application").addEventListener("click", () => {
     submitResolution('rejected');
   });
