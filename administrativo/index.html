@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Reincorporaciones - Administrativo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Area -->
+    <div class="dashboard-header">
+      <div>
+        <h1>Gestión de Reincorporaciones</h1>
+        <p class="subtitle">Bandeja de entrada de solicitudes de alumnos reincorporados.</p>
+      </div>
+      <div class="header-stat">
+        <i data-lucide="clock" class="icon-primary"></i>
+        <span>Tiempo prom. respuesta: <strong>2.4 días</strong></span>
+      </div>
+    </div>
+
+    <!-- Filters & Search bar (Omit global search per requirements, this is a filter within the table) -->
+    <div class="filters-card">
+      <div class="search-input-wrapper">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="table-search" placeholder="Filtrar por alumno, código o plan..." class="input-search">
+      </div>
+      <div class="filter-actions">
+        <button class="btn-outline">
+          <i data-lucide="filter"></i>
+          <span>Filtros</span>
+        </button>
+        <button class="btn-primary" id="btn-download-report">Descargar Reporte</button>
+      </div>
+    </div>
+
+    <!-- DataGrid Table Card -->
+    <div class="table-card">
+      <div class="table-responsive">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Alumno</th>
+              <th>Plan Origen / Destino</th>
+              <th>Fecha Solicitud</th>
+              <th class="text-center">Obs. Manuales</th>
+              <th>Estado</th>
+              <th class="text-right">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="queue-table-body">
+            <!-- Rendered dynamically by JavaScript -->
+          </tbody>
+        </table>
+      </div>
+      <!-- Pagination Footer -->
+      <div class="table-footer">
+        <p id="table-showing-text">Mostrando 5 de 5 solicitudes</p>
+        <div class="pagination-buttons">
+          <button class="btn-pagination" disabled>Anterior</button>
+          <button class="btn-pagination" disabled>Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script_index.js"></script>
+</body>
+</html>

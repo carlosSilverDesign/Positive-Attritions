@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revisión de Expediente - Administrativo</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style_review.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="index.html" class="btn-back">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div class="student-profile-wrapper">
+          <div class="profile-avatar">
+            <i data-lucide="user"></i>
+          </div>
+          <div>
+            <h1 id="header-student-name">Expediente: Juan Pérez García</h1>
+            <p class="subtitle">ID Solicitud: <span id="header-app-id">app-1</span> • <span class="highlight-text">Plan 2018-II → 2024-I</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="btn-outline-destructive" id="btn-reject-application">Rechazar Solicitud</button>
+        <button class="btn-primary-header" id="btn-approve-application">Aprobar Reincorporación</button>
+      </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="review-workspace">
+      <div class="workspace-inner">
+        <!-- Main Column: List of equivalencies to approve/reject -->
+        <section class="review-details">
+          
+          <div class="card-section">
+            <div class="card-section-header">
+              <h3>Análisis de Convalidaciones</h3>
+              <span class="badge-count" id="equivalencies-count-badge">3 equivalencias</span>
+            </div>
+            <div class="equivalencies-container" id="equivalencies-list">
+              <!-- Rendered by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Orphaned / Historical Credits -->
+          <div class="card-section">
+            <div class="card-section-header-simple">
+              <div class="icon-title-wrapper">
+                <i data-lucide="history" class="icon-muted"></i>
+                <div>
+                  <h3>Créditos Históricos (Sin equivalencia)</h3>
+                  <p class="section-desc">Estos cursos no tienen par en el nuevo plan y pasarán como electivos.</p>
+                </div>
+              </div>
+            </div>
+            <div class="historical-grid">
+              <div class="historical-item">
+                <div>
+                  <p class="hist-name">Historia Universal</p>
+                  <p class="hist-code">HIS1</p>
+                </div>
+                <span class="hist-credits">2 CR.</span>
+              </div>
+              <div class="historical-item">
+                <div>
+                  <p class="hist-name">Psicología General</p>
+                  <p class="hist-code">PSI1</p>
+                </div>
+                <span class="hist-credits">3 CR.</span>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- Sidebar: Resolution & Log -->
+        <aside class="review-sidebar">
+          
+          <!-- Final Resolution Box -->
+          <div class="sidebar-card">
+            <h3>
+              <i data-lucide="alert-triangle" class="icon-primary"></i>
+              <span>Resolución Final</span>
+            </h3>
+            
+            <div class="sidebar-body">
+              <div class="credits-result-box">
+                <span class="credits-result-label">Cálculo de Créditos Convalidados</span>
+                <div class="credits-result-row">
+                  <span>Total Acumulado</span>
+                  <strong class="credits-total-bold">18 / 22 Cr.</strong>
+                </div>
+              </div>
+
+              <div class="textarea-wrapper">
+                <label for="global-comments">Comentarios para el alumno</label>
+                <textarea id="global-comments" placeholder="Instrucciones sobre matrícula, pagos o justificación de rechazos parciales..." class="global-textarea"></textarea>
+              </div>
+
+              <div class="alert-info-box">
+                <i data-lucide="info"></i>
+                <span>Al aprobar, se notificará automáticamente al alumno y se habilitará su proceso de matrícula.</span>
+              </div>
+
+              <button class="btn-primary-sidebar" id="btn-approve-sidebar">
+                <span>Aprobar Reincorporación</span>
+                <i data-lucide="send"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- History log -->
+          <div class="sidebar-card">
+            <h4>Historial del Proceso</h4>
+            <div class="history-log">
+              <div class="log-item">
+                <div class="log-dot bg-dot-active"></div>
+                <div class="log-text">
+                  <p class="log-title">Solicitud Enviada</p>
+                  <p class="log-date">17/06/2026 - 10:30 AM</p>
+                </div>
+              </div>
+              <div class="log-item">
+                <div class="log-dot bg-dot-active"></div>
+                <div class="log-text">
+                  <p class="log-title">Asignado a Coordinación</p>
+                  <p class="log-date">17/06/2026 - 11:15 AM</p>
+                </div>
+              </div>
+              <div class="log-item">
+                <div class="log-dot bg-dot-pulse"></div>
+                <div class="log-text">
+                  <p class="log-title text-pulse">En Revisión Actual</p>
+                  <p class="log-date text-pulse">Usted está revisando este expediente</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <script src="script_review.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitud de Adecuación Curricular</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style_apply.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="index.html" class="btn-back">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div>
+          <h1>Solicitud de Adecuación Curricular</h1>
+          <p class="subtitle">Pasos: 1 de 2 • Comparación de Planes</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="summary.html" class="btn-primary-header" id="btn-to-summary">
+          <span>Revisar Resumen</span>
+          <i data-lucide="chevron-right"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Credits Banner -->
+    <div class="credits-banner">
+      <div class="credits-container">
+        <div class="credits-label">
+          <i data-lucide="sparkles" class="color-primary"></i>
+          <span>CRÉDITOS A CONVALIDAR</span>
+        </div>
+        <div class="credits-badge credits-auto">
+          <i data-lucide="check-circle-2"></i>
+          <span>Automáticos: <strong id="auto-credits-val">0 Cr.</strong></span>
+        </div>
+        <div class="credits-badge credits-manual" id="manual-credits-pill" style="display: none;">
+          <i data-lucide="link-2"></i>
+          <span>Adicionales: <strong id="manual-credits-val">+0 Cr.</strong></span>
+        </div>
+        <div class="credits-badge credits-total">
+          <span>Total: <strong id="total-credits-val">0 Cr.</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      <!-- Comparative Column Left -->
+      <section class="plan-column">
+        <div class="column-header">
+          <div>
+            <h3>Plan Histórico (2018-II)</h3>
+            <p>Cursos aprobados</p>
+          </div>
+          <span class="badge-count" id="count-old">7 Cursos</span>
+        </div>
+        <div class="course-list" id="old-courses-container">
+          <!-- Filled by Javascript -->
+        </div>
+        
+        <div class="orphaned-section" id="orphaned-section" style="display: none;">
+          <div class="orphaned-header">
+            <i data-lucide="alert-circle"></i>
+            <h4>Cursos sin convalidación</h4>
+          </div>
+          <div class="orphaned-list" id="orphaned-list-container">
+            <!-- Filled by Javascript -->
+          </div>
+          <p class="orphaned-notice">Estos cursos se registrarán como "Créditos Electivos" o "Históricos".</p>
+        </div>
+      </section>
+
+      <!-- Center Action Button (Desktop Only) -->
+      <div class="center-action-area">
+        <button class="btn-link-action disabled" id="btn-link-courses" disabled>
+          <div class="btn-link-icon-circle">
+            <i data-lucide="link-2"></i>
+          </div>
+          <span class="btn-link-label">Solicitar convalidación adicional</span>
+          <span class="btn-link-sub" id="link-ratio-indicator">Selecciona un curso de cada plan</span>
+        </button>
+      </div>
+
+      <!-- Comparative Column Right -->
+      <section class="plan-column">
+        <div class="column-header">
+          <div>
+            <h3>Plan Vigente (2024-I)</h3>
+            <p>Cursos por matricular</p>
+          </div>
+          <span class="badge-count" id="count-new">6 Cursos</span>
+        </div>
+        <div class="course-list" id="new-courses-container">
+          <!-- Filled by Javascript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Mobile Floating Action Bar -->
+    <div class="mobile-action-bar">
+      <div class="mobile-desc">
+        <p class="mobile-status-title" id="mobile-ratio-title">Selecciona cursos para vincular</p>
+        <p class="mobile-status-subtitle" id="mobile-ratio-desc">0 origen → 0 destino</p>
+      </div>
+      <button class="btn-primary-mobile disabled" id="btn-link-courses-mobile" disabled>
+        <i data-lucide="link-2"></i>
+        <span>Solicitar convalidación adicional</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Dialog Modal for Justification -->
+  <dialog class="modal-dialog" id="justification-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Justificar Convalidación</h3>
+        <button class="btn-close-modal" id="btn-close-modal">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-instruction">
+          Estás solicitando la convalidación de cursos que no tienen una equivalencia predefinida. Explica por qué consideras que el contenido es equivalente.
+        </p>
+        
+        <div class="modal-alerts">
+          <div class="modal-alert-box">
+            <i data-lucide="triangle-alert"></i>
+            <span>Nos regimos al reglamento vigente de convalidación.</span>
+          </div>
+          <div class="modal-alert-box">
+            <i data-lucide="triangle-alert"></i>
+            <span>Sujeto a evaluación del Programa académico.</span>
+          </div>
+        </div>
+
+        <textarea id="justification-textarea" placeholder="Ej: El contenido de Mate 1 abarca el 80% del sílabo de Matemática Financiera..." class="textarea-input"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" id="btn-cancel-modal">Cancelar</button>
+        <button class="btn-confirm" id="btn-confirm-modal">Confirmar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script_apply.js"></script>
+</body>
+</html>

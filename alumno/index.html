@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Alumno - Adecuación Curricular</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style_index.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Welcome Section -->
+    <div class="welcome-card">
+      <div class="welcome-left">
+        <div class="avatar-container">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" alt="Juan Pérez García" class="avatar-img">
+        </div>
+        <div class="welcome-text">
+          <h1>¡Bienvenido de vuelta, Juan Pérez García!</h1>
+          <p class="subtitle">
+            <i data-lucide="graduation-cap" class="icon-small"></i>
+            <span>Administración de Negocios • Código: 202010123</span>
+          </p>
+        </div>
+      </div>
+      <div class="welcome-right" id="action-container">
+        <!-- Generado dinámicamente: botón para solicitar -->
+        <a href="apply.html" class="btn-primary" id="btn-start-application">
+          <span>Solicitar Adecuación Curricular</span>
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon bg-accent">
+          <i data-lucide="calendar" class="icon-accent"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-label">ÚLTIMO CICLO</p>
+          <p class="stat-value">2022-2</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-green-light">
+          <i data-lucide="file-check" class="icon-green"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-label">ESTADO ACADÉMICO</p>
+          <p class="stat-value text-green">Apto</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon bg-blue-light">
+          <i data-lucide="user" class="icon-blue"></i>
+        </div>
+        <div class="stat-info">
+          <p class="stat-label">PLAN DE ESTUDIOS</p>
+          <p class="stat-value text-blue">Plan 2018-II</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- History / Summary Section -->
+    <div class="history-card">
+      <div class="history-header">
+        <h2>Resumen de Solicitudes</h2>
+        <span class="update-time">Última actualización: Hoy</span>
+      </div>
+      <div class="history-content" id="history-content-area">
+        <!-- Cargado por JS basándose en localStorage -->
+        <div class="empty-state">
+          <div class="empty-icon">
+            <i data-lucide="file-check" class="icon-large"></i>
+          </div>
+          <p class="empty-title">No tienes solicitudes pendientes</p>
+          <p class="empty-desc">Inicia una nueva solicitud de adecuación curricular para continuar tu carrera.</p>
+          <a href="apply.html" class="link-action">Comenzar ahora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script_index.js"></script>
+</body>
+</html>

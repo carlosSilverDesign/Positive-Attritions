@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resumen de Convalidaciones</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style_summary.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <a href="apply.html" class="btn-back">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div>
+          <h1>Solicitud de Adecuación Curricular</h1>
+          <p class="subtitle">Pasos: 2 de 2 • Resumen y Envío</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <a href="apply.html" class="btn-secondary-header">Atrás</a>
+        <button class="btn-primary-header" id="btn-submit-application">
+          <span>Enviar Solicitud</span>
+          <i data-lucide="check-circle-2"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Summary -->
+    <main class="summary-container">
+      <div class="summary-inner">
+        
+        <div class="summary-heading">
+          <h2>Resumen de Convalidaciones</h2>
+          <p>Revisa los cambios antes de enviar tu solicitud oficial.</p>
+        </div>
+
+        <!-- Credits Dashboard -->
+        <div class="stats-dashboard">
+          <div class="stat-box box-primary">
+            <div class="stat-box-header">
+              <i data-lucide="check-circle-2"></i>
+              <span>AUTOMÁTICOS</span>
+            </div>
+            <p class="stat-number" id="auto-credits-num">0</p>
+            <p class="stat-label">créditos</p>
+          </div>
+          <div class="stat-box box-orange">
+            <div class="stat-box-header">
+              <i data-lucide="link-2"></i>
+              <span>ADICIONALES</span>
+            </div>
+            <p class="stat-number text-orange" id="manual-credits-num">0</p>
+            <p class="stat-label">créditos solicitados</p>
+          </div>
+          <div class="stat-box box-dark">
+            <div class="stat-box-header">
+              <i data-lucide="sparkles"></i>
+              <span>TOTAL</span>
+            </div>
+            <p class="stat-number" id="total-credits-num">0</p>
+            <p class="stat-label">créditos a convalidar</p>
+          </div>
+        </div>
+
+        <!-- Mappings List -->
+        <div class="equivalencies-list" id="equivalencies-list-container">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Alert Disclaimer -->
+        <div class="info-disclaimer">
+          <i data-lucide="info" class="icon-info"></i>
+          <div class="disclaimer-text">
+            <p class="disclaimer-title">Nota importante</p>
+            <p class="disclaimer-body">
+              Las convalidaciones marcadas como <strong>Manuales</strong> serán revisadas por un coordinador académico. El promedio final del curso convalidado se calculará según el peso de créditos de los cursos de origen.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="script_summary.js"></script>
+</body>
+</html>
